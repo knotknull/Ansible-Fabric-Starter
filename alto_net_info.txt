@@ -1,0 +1,48 @@
+hackfab001  (kafka)
+
+ubuntu@hackfab001:~$ docker ps
+CONTAINER ID        IMAGE                                 COMMAND                  CREATED             STATUS              PORTS                                                                    NAMES
+c8e9ff83293d        hyperledger/fabric-kafka:0.4.10       "/docker-entrypoint.…"   15 minutes ago      Up 15 minutes       0.0.0.0:9092->9092/tcp, 9093/tcp                                         kafka-broker.kafka.example.com
+29be0eb4cc3c        hyperledger/fabric-zookeeper:0.4.10   "/docker-entrypoint.…"   15 minutes ago      Up 15 minutes       0.0.0.0:2181->2181/tcp, 0.0.0.0:2888->2888/tcp, 0.0.0.0:3888->3888/tcp   zookeeper.kafka.example.com
+
+hackfab002 (ccp)
+ubuntu@hackfab002:~$ docker ps
+CONTAINER ID        IMAGE                                                                                                         COMMAND                  CREATED             STATUS              PORTS                                                                    NAMES
+71978c74f042        dev-peer0.ccp.example.com-relationship-1.0-30d7b3b2e75707c60aba6a7f7628f6c758074978f073fbe9d8657943339c9fc5   "chaincode -peer.add…"   14 minutes ago      Up 14 minutes                                                                                dev-peer0.ccp.example.com-relationship-1.0
+b66092df1679        dev-peer0.ccp.example.com-reference-1.0-ec2effbe0e6a7003ebee2d7f150c6988659eaddd53e8791d71da1c546cf56a78      "chaincode -peer.add…"   15 minutes ago      Up 15 minutes                                                                                dev-peer0.ccp.example.com-reference-1.0
+a88f6c4176d6        dockeraltoros/fabric-rest                                                                                     "sh -c 'npm start'"      15 minutes ago      Up 15 minutes       0.0.0.0:4000->4000/tcp                                                   api.ccp.example.com
+51121196ec52        hyperledger/fabric-peer:amd64-1.2.0                                                                           "peer node start"        15 minutes ago      Up 15 minutes       0.0.0.0:7051->7051/tcp, 0.0.0.0:7053->7053/tcp                           peer0.ccp.example.com
+24972a731ddb        hyperledger/fabric-peer:amd64-1.2.0                                                                           "peer node start"        15 minutes ago      Up 15 minutes       0.0.0.0:7056->7051/tcp, 0.0.0.0:7058->7053/tcp                           peer1.ccp.example.com
+1233dc7b8cdb        hyperledger/fabric-tools:amd64-1.2.0                                                                          "/bin/bash"              15 minutes ago      Up 15 minutes                                                                                cli.example.com
+172010c7f8cb        hyperledger/fabric-tools:amd64-1.2.0                                                                          "/bin/bash"              15 minutes ago      Up 15 minutes                                                                                cli.ccp.example.com
+a9d5af230579        hyperledger/fabric-tools:amd64-1.2.0                                                                          "/bin/bash"              15 minutes ago      Up 15 minutes                                                                                cliNoCryptoVolume.ccp.example.com
+2cbbcebfbcda        hyperledger/fabric-orderer:amd64-1.2.0                                                                        "orderer"                15 minutes ago      Up 15 minutes       0.0.0.0:7050->7050/tcp                                                   orderer0.example.com
+37aa8dd91d56        hyperledger/fabric-kafka:0.4.10                                                                               "/docker-entrypoint.…"   16 minutes ago      Up 16 minutes       0.0.0.0:9092->9092/tcp, 9093/tcp                                         kafka-broker.ccp.example.com
+5816ffe44f99        hyperledger/fabric-zookeeper:0.4.10                                                                           "/docker-entrypoint.…"   16 minutes ago      Up 16 minutes       0.0.0.0:2181->2181/tcp, 0.0.0.0:2888->2888/tcp, 0.0.0.0:3888->3888/tcp   zookeeper.ccp.example.com
+
+hackfab003 (clnt1)
+ubuntu@hackfab003:~$ docker ps
+CONTAINER ID        IMAGE                                                                                                           COMMAND                  CREATED             STATUS              PORTS                                                                    NAMES
+64f6b5e0b0da        dev-peer0.clnt1.example.com-relationship-1.0-553e4174b3bc610d39d712e0ad98d3e7cc7c3621595cd6607914ca189cc3e7c9   "chaincode -peer.add…"   15 minutes ago      Up 15 minutes                                                                                dev-peer0.clnt1.example.com-relationship-1.0
+e585ba9deec9        dockeraltoros/fabric-rest                                                                                       "sh -c 'npm start'"      16 minutes ago      Up 16 minutes       0.0.0.0:4000->4000/tcp                                                   api.clnt1.example.com
+8de673721737        hyperledger/fabric-peer:amd64-1.2.0                                                                             "peer node start"        16 minutes ago      Up 16 minutes       0.0.0.0:7051->7051/tcp, 0.0.0.0:7053->7053/tcp                           peer0.clnt1.example.com
+b8e8f0559274        hyperledger/fabric-peer:amd64-1.2.0                                                                             "peer node start"        16 minutes ago      Up 16 minutes       0.0.0.0:7056->7051/tcp, 0.0.0.0:7058->7053/tcp                           peer1.clnt1.example.com
+84df8a3d9927        hyperledger/fabric-tools:amd64-1.2.0                                                                            "/bin/bash"              16 minutes ago      Up 16 minutes                                                                                cli.example.com
+6a101819944d        hyperledger/fabric-tools:amd64-1.2.0                                                                            "/bin/bash"              16 minutes ago      Up 16 minutes                                                                                cliNoCryptoVolume.clnt1.example.com
+43266c64b965        hyperledger/fabric-tools:amd64-1.2.0                                                                            "/bin/bash"              16 minutes ago      Up 16 minutes                                                                                cli.clnt1.example.com
+f48a50e2444f        hyperledger/fabric-orderer:amd64-1.2.0                                                                          "orderer"                16 minutes ago      Up 16 minutes       0.0.0.0:7050->7050/tcp                                                   orderer1.example.com
+0e3ba30bce36        hyperledger/fabric-kafka:0.4.10                                                                                 "/docker-entrypoint.…"   16 minutes ago      Up 16 minutes       0.0.0.0:9092->9092/tcp, 9093/tcp                                         kafka-broker.clnt1.example.com
+80c53a9735b7        hyperledger/fabric-zookeeper:0.4.10                                                                             "/docker-entrypoint.…"   16 minutes ago      Up 16 minutes       0.0.0.0:2181->2181/tcp, 0.0.0.0:2888->2888/tcp, 0.0.0.0:3888->3888/tcp   zookeeper.clnt1.example.com
+
+hackfab004 (dlr1)
+ubuntu@hackfab004:~$ docker ps
+CONTAINER ID        IMAGE                                    COMMAND                  CREATED             STATUS              PORTS                                            NAMES
+c7b5e45cd948        dockeraltoros/fabric-rest                "sh -c 'npm start'"      19 minutes ago      Up 19 minutes       0.0.0.0:4000->4000/tcp                           api.dlr1.example.com
+733ae0416c46        hyperledger/fabric-peer:amd64-1.2.0      "peer node start"        19 minutes ago      Up 19 minutes       0.0.0.0:7056->7051/tcp, 0.0.0.0:7058->7053/tcp   peer1.dlr1.example.com
+26b88aa873d3        hyperledger/fabric-peer:amd64-1.2.0      "peer node start"        19 minutes ago      Up 19 minutes       0.0.0.0:7051->7051/tcp, 0.0.0.0:7053->7053/tcp   peer0.dlr1.example.com
+893909e690e8        hyperledger/fabric-tools:amd64-1.2.0     "/bin/bash"              20 minutes ago      Up 19 minutes                                                        cli.example.com
+172e4d01f676        hyperledger/fabric-tools:amd64-1.2.0     "/bin/bash"              20 minutes ago      Up 19 minutes                                                        cli.dlr1.example.com
+bd3bc23b5200        hyperledger/fabric-tools:amd64-1.2.0     "/bin/bash"              20 minutes ago      Up 19 minutes                                                        cliNoCryptoVolume.dlr1.example.com
+02a3a76e8368        hyperledger/fabric-orderer:amd64-1.2.0   "orderer"                20 minutes ago      Up 20 minutes       0.0.0.0:7050->7050/tcp                           orderer2.example.com
+b12e1dbccf87        hyperledger/fabric-kafka:0.4.10          "/docker-entrypoint.…"   20 minutes ago      Up 20 minutes       0.0.0.0:9092->9092/tcp, 9093/tcp                 kafka-broker.dlr1.example.com
+
